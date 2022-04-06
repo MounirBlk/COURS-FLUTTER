@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 String titre = "Formulaire";
-String test = "";
+String _test = "Vide";
 
 class Formulaire extends StatefulWidget {
   const Formulaire({Key? key}) : super(key: key);
@@ -30,13 +30,18 @@ class _FormulaireState extends State<Formulaire> {
               ),
               onChanged: (value) {
                 setState(() {
-                  test = value;
+                  _test = value;
                 });
+                print(value);
               },
             ),
-            Text(test),
+            Text(_test),
             ElevatedButton(
-              onPressed: () => print(test),
+              onPressed: () => {
+                setState(() {
+                  titre = _test;
+                })
+              },
               child: const Text("Validate"),
             )
           ],
