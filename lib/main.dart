@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_april/page2.dart';
 import 'package:flutter_april/pageExo.dart';
 import 'package:flutter_april/formulaire.dart';
+import 'package:flutter_april/carte.dart';
+import 'package:flutter_april/calculatrice.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.indigo,
       ),
       home: const MyHomePage(title: 'Test'),
     );
@@ -77,6 +79,84 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Center(child: Text(widget.title)),
+      ),
+      drawer: Drawer(
+        backgroundColor: Colors.greenAccent,
+        child: ListView(
+          children: [
+            const DrawerHeader(
+              child: Text("Menu"),
+              decoration: BoxDecoration(
+                color: Colors.green,
+              ),
+            ),
+            ListTile(
+              title: const Text("Page 2"),
+              leading: IconButton(
+                icon: const Icon(Icons.abc),
+                onPressed: () {},
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Page2()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text("PageExo"),
+              leading: IconButton(
+                icon: const Icon(Icons.abc),
+                onPressed: () {},
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const PageExo()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text("Formulaire"),
+              leading: IconButton(
+                icon: const Icon(Icons.format_align_center),
+                onPressed: () {},
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Formulaire()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text("Users"),
+              leading: IconButton(
+                icon: const Icon(Icons.person),
+                onPressed: () {},
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Carte()),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text("Calculatrice"),
+              leading: IconButton(
+                icon: const Icon(Icons.calculate_outlined),
+                onPressed: () {},
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Calculatrice()),
+                );
+              },
+            ),
+          ],
+        ),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -136,6 +216,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       scale: 0.5),
                 )),
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.green),
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -145,6 +228,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text("PageExo"),
             ),
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.red),
+              ),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return const Formulaire();
@@ -152,8 +238,30 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text("Formulaire"),
             ),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.indigoAccent),
+              ),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const Carte();
+                }));
+              },
+              child: const Text("Users"),
+            ),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.amber),
+              ),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const Calculatrice();
+                }));
+              },
+              child: const Text("Calculatrice"),
+            ),
             ElevatedButton.icon(
-              onPressed: () => true,
+              onPressed: () => _incrementCounter(),
               icon: const Icon(
                 Icons.add_box,
                 color: Colors.purple,

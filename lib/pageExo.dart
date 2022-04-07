@@ -24,18 +24,17 @@ class _PageExoState extends State<PageExo> {
       body: Align(
           alignment: Alignment.center,
           child: Container(
-            margin: EdgeInsets.fromLTRB(40, 40, 40, 40),
-            padding: EdgeInsets.all(40),
+            margin: const EdgeInsets.fromLTRB(40, 40, 40, 40),
+            padding: const EdgeInsets.all(40),
             child: Column(children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                      child: const Text(
+                children: const [
+                  Text(
                     'Strawberry Pavlova',
                     style: TextStyle(
                         color: Colors.black, fontWeight: FontWeight.bold),
-                  )),
+                  ),
                 ],
               ),
               Row(
@@ -59,7 +58,7 @@ class _PageExoState extends State<PageExo> {
                   children: [
                     Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: [
+                      children: const [
                         Icon(Icons.star, color: Colors.black),
                         Icon(Icons.star, color: Colors.black),
                         Icon(Icons.star, color: Colors.black),
@@ -69,8 +68,8 @@ class _PageExoState extends State<PageExo> {
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Text(
+                      children: const [
+                        Text(
                           '170 Reviews',
                           style: TextStyle(
                               color: Colors.black, fontWeight: FontWeight.bold),
