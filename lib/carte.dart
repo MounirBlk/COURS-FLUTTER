@@ -109,6 +109,25 @@ class _CarteState extends State<Carte> {
     );
   }
 
+  void _onBasicAlertPressed(context) {
+    Alert(
+      context: context,
+      type: AlertType.success,
+      title: "Succès",
+      desc: "Le formulaire est correct !",
+      buttons: [
+        DialogButton(
+          child: const Text(
+            "Fermer",
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => Navigator.pop(context),
+          width: 120,
+        )
+      ],
+    ).show();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -143,40 +162,49 @@ class _CarteState extends State<Carte> {
                     ),
                     title: Text(users[index].name!),
                     subtitle: Text(users[index].email!),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.edit),
-                          onPressed: () {
-                            _createEditUser('edit', index);
-                          },
-                          color: Colors.blue,
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.delete),
-                          onPressed: () {
-                            const ShowConfirmAlertDialog().show(
-                              context,
-                              "Suppression",
-                              const Text(
-                                  "Êtes-vous sur de vouloir supprimer cet utilisateur ?"),
-                              "Supprimer",
-                              "Annuler",
-                              () {
-                                setState(() {
-                                  users.removeAt(index);
-                                });
-                                Navigator.pop(context);
+                    trailing: SizedBox(
+                      width: 100,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Visibility(
+                            visible: users[index].name!.length < 4,
+                            child: IconButton(
+                              icon: const Icon(
+                                Icons.edit,
+                                color: Colors.black,
+                              ),
+                              onPressed: () {
+                                _createEditUser('edit', index);
                               },
-                              () {
-                                Navigator.pop(context);
-                              },
-                            );
-                          },
-                          color: Colors.red,
-                        ),
-                      ],
+                              color: Colors.blue,
+                            ),
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () {
+                              const ShowConfirmAlertDialog().show(
+                                context,
+                                "Suppression",
+                                const Text(
+                                    "Êtes-vous sur de vouloir supprimer cet utilisateur ?"),
+                                "Supprimer",
+                                "Annuler",
+                                () {
+                                  setState(() {
+                                    users.removeAt(index);
+                                  });
+                                  Navigator.pop(context);
+                                },
+                                () {
+                                  Navigator.pop(context);
+                                },
+                              );
+                            },
+                            color: Colors.red,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -185,23 +213,4 @@ class _CarteState extends State<Carte> {
       ),
     );
   }
-}
-
-_onBasicAlertPressed(context) {
-  Alert(
-    context: context,
-    type: AlertType.success,
-    title: "Succès",
-    desc: "Le formulaire est correct !",
-    buttons: [
-      DialogButton(
-        child: const Text(
-          "Fermer",
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-        onPressed: () => Navigator.pop(context),
-        width: 120,
-      )
-    ],
-  ).show();
 }
