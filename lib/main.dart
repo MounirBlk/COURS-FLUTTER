@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_april/page2.dart';
 import 'package:flutter_april/pageExo.dart';
 import 'package:flutter_april/formulaire.dart';
+import 'package:flutter_april/carte.dart';
 
 void main() {
   runApp(const MyApp());
@@ -136,6 +137,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       scale: 0.5),
                 )),
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.green),
+              ),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -145,6 +149,9 @@ class _MyHomePageState extends State<MyHomePage> {
               child: const Text("PageExo"),
             ),
             ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.red),
+              ),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return const Formulaire();
@@ -152,8 +159,19 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               child: const Text("Formulaire"),
             ),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.indigoAccent),
+              ),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const Carte();
+                }));
+              },
+              child: const Text("Users"),
+            ),
             ElevatedButton.icon(
-              onPressed: () => true,
+              onPressed: () => _incrementCounter(),
               icon: const Icon(
                 Icons.add_box,
                 color: Colors.purple,

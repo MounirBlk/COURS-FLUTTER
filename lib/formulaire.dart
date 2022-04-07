@@ -117,7 +117,9 @@ class _FormulaireState extends State<Formulaire> {
                               child: const Text(
                                 "Fermer",
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 20),
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
                               ),
                               onPressed: () => Navigator.pop(context),
                               width: 120,
